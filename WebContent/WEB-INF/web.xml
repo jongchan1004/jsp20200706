@@ -40,5 +40,56 @@
   			/WEB-INF/tlds/self-el-functions.tld
   		</taglib-location>
   	</taglib>
-  </jsp-config>  
+  </jsp-config>
+  
+  <servlet>
+  	<servlet-name>mysqlDriverLoader</servlet-name>
+  	<servlet-class>selfTest.MySQLDriverLoader</servlet-class>
+  	<load-on-startup>1</load-on-startup>
+  </servlet>
+  
+  <servlet>
+  	<servlet-name>DBCPInit</servlet-name>
+  	<servlet-class>selfTest.DBCPInit</servlet-class>
+  	<load-on-startup>2</load-on-startup>
+  </servlet>
+  
+  <servlet>
+  	<servlet-name>DBCPInit2</servlet-name>
+  	<servlet-class>selfTest.DBCPInit2</servlet-class>
+  	<init-param>
+  		<param-name>jdbcdriver</param-name>
+  		<param-value>com.mysql.cj.jdbc.Driver</param-value>
+  	</init-param>
+  	<init-param>
+  		<param-name>jdbcUrl</param-name>
+  		<param-value>
+  			jdbc:mysql://localhost:3306/chap14?serverTimezone=Asia/Seoul
+  		</param-value>
+  	</init-param>
+  	<init-param>
+  		<param-name>dbUser</param-name>
+  		<param-value>jspexam</param-value>
+  	</init-param>
+  	<init-param>
+  		<param-name>dbPass</param-name>
+  		<param-value>jsppw</param-value>
+  	</init-param>
+  	<init-param>
+  		<param-name>poolName</param-name>
+  		<param-value>chap14_1</param-value>
+  	</init-param>
+  	<load-on-startup>3</load-on-startup>
+  </servlet>
+  
+  <servlet>
+  	<servlet-name>myservlet</servlet-name>
+  	<servlet-class>chap12.MyServlet</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>myservlet</servlet-name>
+  	<url-pattern>/myservlet</url-pattern>
+  </servlet-mapping>
+  
 </web-app>
