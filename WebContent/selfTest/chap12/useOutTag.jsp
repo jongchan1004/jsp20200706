@@ -7,7 +7,7 @@
 FileReader reader = null;
 try {
 	//String path = request.getParameter("path");
-	String path = "/selfTest/chap11/useIfTag.jsp";
+	String path = "/selfTest/chap12/useIfTag.jsp";
 	reader = new FileReader(getServletContext().getRealPath(path)); //절대경로
 %>
 

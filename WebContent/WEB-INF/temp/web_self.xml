@@ -64,7 +64,7 @@
   	<init-param>
   		<param-name>jdbcUrl</param-name>
   		<param-value>
-  			jdbc:mysql://localhost:3306/chap14?useUnicode=true&amp;characterEncoding=utf8&amp;serverTimezone=Asia/Seoul
+  			jdbc:mysql://localhost:3306/chap14?serverTimezone=Asia/Seoul
   		</param-value>
   	</init-param>
   	<init-param>
@@ -83,58 +83,19 @@
   </servlet>
   
   <servlet>
-  	<servlet-name>selfSimpleController</servlet-name>
-  	<servlet-class>selfTest.mvc.simple.SimpleController</servlet-class>
-  </servlet>
-  
-  <servlet-mapping>
-  	<servlet-name>selfSimpleController</servlet-name>
-  	<url-pattern>/selfSimple</url-pattern>
-  </servlet-mapping>
-  
-  <servlet>
-  	<servlet-name>selfCUF</servlet-name>
+  	<servlet-name>selfControllerUsingFile</servlet-name>
   	<servlet-class>selfTest.mvc.controller.ControllerUsingFile</servlet-class>
   	<init-param>
   		<param-name>configFile</param-name>
-  		<param-value>/WEB-INF/command/commandHandler.properties</param-value>
+  		<param-value>/WEB-INF/commandHandler.properties</param-value>
   	</init-param>
   	<load-on-startup>4</load-on-startup>
   </servlet>
   
   <servlet-mapping>
-  	<servlet-name>selfCUF</servlet-name>
-  	<url-pattern>/selfcuf</url-pattern>
+  	<servlet-name>selfControllerUsingFile</servlet-name>
+  	<url-pattern>/selfControllerUsingFile</url-pattern>
   </servlet-mapping>
-  
-  <servlet>
-  	<servlet-name>selfCUFUsingURI</servlet-name>
-  	<servlet-class>selfTest.mvc.controller.ControllerUsingURI</servlet-class>
-  	<init-param>
-  		<param-name>configFile</param-name>
-  		<param-value>/WEB-INF/command/commandHandlerURI.properties</param-value>
-  	</init-param>
-  	<load-on-startup>5</load-on-startup>
-  </servlet>
-  
-  <servlet-mapping>
-  	<servlet-name>selfCUFUsingURI</servlet-name>
-  	<url-pattern>*.dooo</url-pattern>
-  </servlet-mapping>
-  
-  <filter>
-  	<filter-name>NullParameter</filter-name>
-  	<filter-class>selfTest.filter.NullParameterFilter</filter-class>
-  	<init-param>
-  		<param-name>parameterNames</param-name>
-  		<param-value>id,name</param-value>
-  	</init-param>
-  </filter>
-  
-  <filter-mapping>
-  	<filter-name>NullParameter</filter-name>
-  	<url-pattern>*.jsp</url-pattern>
-  </filter-mapping>
   
   <servlet>
   	<servlet-name>myservlet</servlet-name>
@@ -144,6 +105,16 @@
   <servlet-mapping>
   	<servlet-name>myservlet</servlet-name>
   	<url-pattern>/myservlet</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>selfSimpleController</servlet-name>
+  	<servlet-class>selfTest.mvc.simple.SimpleController</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>selfSimpleController</servlet-name>
+  	<url-pattern>/selfSimple</url-pattern>
   </servlet-mapping>
   
   <servlet>
@@ -196,41 +167,4 @@
   	<servlet-name>servlet3</servlet-name>
   	<url-pattern>/foo/*</url-pattern>
   </servlet-mapping>
-
-  <servlet>
-  	<servlet-name>initmethod1</servlet-name>
-  	<servlet-class>chap17.InitMethodEx1</servlet-class>
-  	<load-on-startup>6</load-on-startup>
-  </servlet>
-  
-  <servlet>
-  	<servlet-name>initmethod2</servlet-name>
-  	<servlet-class>chap17.InitMethodEx2</servlet-class>
-  	<load-on-startup>7</load-on-startup>
-  </servlet>    
-
-  <servlet>
-  	<servlet-name>initparam servlet</servlet-name>
-  	<servlet-class>chap17.InitParamServletEx1</servlet-class>
-  	<init-param>
-  		<param-name>name1</param-name>
-  		<param-value>value1</param-value>
-  	</init-param>
-  	<init-param>
-  		<param-name>name4</param-name>
-  		<param-value>value4</param-value>
-  	</init-param>
-  	<init-param>
-  		<param-name>jdbcUrl</param-name>
-  		<param-value>
-  			jdbc:mysql://localhost:3306/chap14?useUnicode=true&amp;characterEncoding=utf8&amp;serverTimezone=Asia/Seoul
-  		</param-value>
-  	</init-param>
-  </servlet>
-  
-  <servlet-mapping>
-  	<servlet-name>initparam servlet</servlet-name>
-  	<url-pattern>/test/init</url-pattern>
-  </servlet-mapping>
-    
 </web-app>

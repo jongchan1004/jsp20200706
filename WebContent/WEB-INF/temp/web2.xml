@@ -122,20 +122,6 @@
   	<url-pattern>*.dooo</url-pattern>
   </servlet-mapping>
   
-  <filter>
-  	<filter-name>NullParameter</filter-name>
-  	<filter-class>selfTest.filter.NullParameterFilter</filter-class>
-  	<init-param>
-  		<param-name>parameterNames</param-name>
-  		<param-value>id,name</param-value>
-  	</init-param>
-  </filter>
-  
-  <filter-mapping>
-  	<filter-name>NullParameter</filter-name>
-  	<url-pattern>*.jsp</url-pattern>
-  </filter-mapping>
-  
   <servlet>
   	<servlet-name>myservlet</servlet-name>
   	<servlet-class>chap12.MyServlet</servlet-class>
