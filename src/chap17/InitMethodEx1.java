@@ -34,9 +34,9 @@ public class InitMethodEx1 extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		System.out.println("init doGet 실행");
+		System.out.println("init1 doGet 실행");
 		response.setContentType("text/html; charset=utf-8");
-		response.getWriter().append("init doget 실행").append(request.getContextPath());
+		response.getWriter().append("init1 doget 실행").append(request.getContextPath());
 	}
 
 	/**

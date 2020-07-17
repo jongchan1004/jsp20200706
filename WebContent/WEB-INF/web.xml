@@ -22,6 +22,7 @@
   	<param-value>5</param-value>
   </context-param>
   
+  <!-- 개인공부 -->
   <jsp-config>
   	<taglib>
   		<taglib-uri>
@@ -121,7 +122,7 @@
   	<servlet-name>selfCUFUsingURI</servlet-name>
   	<url-pattern>*.dooo</url-pattern>
   </servlet-mapping>
-  
+  <!--  
   <filter>
   	<filter-name>NullParameter</filter-name>
   	<filter-class>selfTest.filter.NullParameterFilter</filter-class>
@@ -135,7 +136,47 @@
   	<filter-name>NullParameter</filter-name>
   	<url-pattern>*.jsp</url-pattern>
   </filter-mapping>
+  -->
+  <filter>
+  	<filter-name>LoginCheck</filter-name>
+  	<filter-class>selfTest.filter.LoginCheckFilter</filter-class>
+  </filter>
   
+  <filter-mapping>
+  	<filter-name>LoginCheck</filter-name>
+  	<url-pattern>/selfTest/chap19/board/*</url-pattern>
+  </filter-mapping>  
+  
+  <filter>
+  	<filter-name>encodingFilter</filter-name>
+  	<filter-class>selfTest.util.CharacterEncodingFilter</filter-class>
+  	<init-param>
+  		<param-name>encoding</param-name>
+  		<param-value>utf-8</param-value>
+  	</init-param>
+  </filter>
+  
+  <filter-mapping>
+  	<filter-name>encodingFilter</filter-name>
+  	<url-pattern>/*</url-pattern>
+  </filter-mapping>
+  
+  <listener>
+  	<listener-class>selfTest.jdbc.DBCPInitListener</listener-class>
+  </listener>
+  
+  <context-param>
+  	<param-name>poolConfig</param-name>
+  	<param-value>
+  		jdbcdriver=com.mysql.cj.jdbc.Driver
+  		jdbcUrl=jdbc:mysql://localhost:3306/guestbook?useUnicode=true&amp;characterEncoding=utf8&amp;serverTimezone=Asia/Seoul
+  		dbUser=jspexam
+  		dbPass=jsppw
+  		poolName=guestbook
+  	</param-value>
+  </context-param>
+  
+  <!-- 교육 -->
   <servlet>
   	<servlet-name>myservlet</servlet-name>
   	<servlet-class>chap12.MyServlet</servlet-class>
@@ -232,5 +273,76 @@
   	<servlet-name>initparam servlet</servlet-name>
   	<url-pattern>/test/init</url-pattern>
   </servlet-mapping>
+  
+  <filter>
+  	<filter-name>filterex1</filter-name>
+  	<filter-class>chap19.FilterEx1</filter-class>
+  </filter>
+  
+  <filter-mapping>
+  	<filter-name>filterex1</filter-name>
+  	<servlet-name>ServletEx1</servlet-name>
+  </filter-mapping>
+
+  <filter>
+  	<filter-name>filterex2</filter-name>
+  	<filter-class>chap19.FilterEx2</filter-class>
+  </filter>
     
+  <filter-mapping>
+  	<filter-name>filterex2</filter-name>
+  	<servlet-name>ServletEx1</servlet-name>
+  </filter-mapping>
+    
+  <servlet>
+  	<servlet-name>ServletEx1</servlet-name>
+  	<servlet-class>chap19.ServletEx1</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>ServletEx1</servlet-name>
+  	<url-pattern>/chap19/filterex1</url-pattern>
+  </servlet-mapping>
+  
+  <!-- LoginFilterEx1, VIPFilterEx1 -->
+  <servlet>
+  	<servlet-name>vipservlet1</servlet-name>
+  	<servlet-class>chap19.sample.VIPFilterEx1Servlet</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>vipservlet1</servlet-name>
+  	<url-pattern>/chap19/vipman/*</url-pattern>
+  </servlet-mapping>
+  
+  <filter>
+  	<filter-name>checkLogIn</filter-name>
+  	<filter-class>chap19.sample.LogInFilterEx1</filter-class>
+  </filter>
+  
+  <filter-mapping>
+  	<filter-name>checkLogIn</filter-name>
+  	<servlet-name>vipservlet1</servlet-name>
+  </filter-mapping>
+  
+  <!--  -->
+  <servlet>
+  	<servlet-name>chap19/servlet3</servlet-name>
+  	<servlet-class>chap19.ServletEx3</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>chap19/servlet3</servlet-name>
+  	<url-pattern>/chap19/servletex3</url-pattern>
+  </servlet-mapping>
+  
+  <filter>
+  	<filter-name>chap/filter3</filter-name>
+  	<filter-class>chap19.FilterEx3</filter-class>
+  </filter>
+  
+  <filter-mapping>
+  	<filter-name>chap/filter3</filter-name>
+  	<servlet-name>chap19/servlet3</servlet-name>
+  </filter-mapping>
 </web-app>

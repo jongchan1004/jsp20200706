@@ -7,7 +7,7 @@
 	version="2.1">
 
 	<description>EL에서 함수실행</description>
-	<tlib-version>1.2.5</tlib-version>
+	<tlib-version>1.2</tlib-version>
 	<short-name>ELfunctions</short-name>
 	
 	<function>

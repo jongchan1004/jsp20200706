@@ -9,7 +9,7 @@
 List<Long> values1 = Arrays.asList(1L, 2L, 5L, 10L);
 request.setAttribute("vals", values1);
 %>
-${myfunc:sum(vals)}
+합계 ${myfunc:sum(vals)} <br />
 
 <%--2.스크립트릿 w/ EL c:set태그 --%>
 <%

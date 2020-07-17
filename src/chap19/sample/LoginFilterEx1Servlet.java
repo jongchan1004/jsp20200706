@@ -1,49 +1,47 @@
-package chap17;
+package chap19.sample;
 
 import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
- * Servlet implementation class InitMethodEx1
+ * Servlet implementation class LoginFilterEx1Servlet
  */
-@WebServlet("/init2")
-public class InitMethodEx2 extends HttpServlet {
+@WebServlet("/chap19/login")
+public class LoginFilterEx1Servlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public InitMethodEx2() {
+    public LoginFilterEx1Servlet() {
         super();
         // TODO Auto-generated constructor stub
     }
-    
-    @Override
-    public void init() throws ServletException {
-    	// TODO Auto-generated method stub
-    	super.init();
-    	System.out.println("InitMethodEx2 init 메소드 최초 실행");
-    }
-    
+
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		System.out.println("init doGet 실행");
-		response.setContentType("text/html; charset=utf-8");
-		response.getWriter().append("init2 doget 실행").append(request.getContextPath());
+		
+//		RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/chap19/login.jsp");
+//		view.forward(request, response);
+		request.getRequestDispatcher("/WEB-INF/chap19/login.jsp").forward(request, response);
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		HttpSession session = request.getSession();
+		session.setAttribute("user", request.getParameter("id"));
+		
 		doGet(request, response);
 	}
 

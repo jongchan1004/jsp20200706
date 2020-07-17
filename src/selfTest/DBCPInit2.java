@@ -37,8 +37,7 @@ public class DBCPInit2 extends HttpServlet {
 			String pw = getInitParameter("dbPass");
 			
 			ConnectionFactory connFactory = new DriverManagerConnectionFactory(jdbcUrl, username, pw);
-			PoolableConnectionFactory poolableConnFactory =
-					new PoolableConnectionFactory(connFactory, null);
+			PoolableConnectionFactory poolableConnFactory =	new PoolableConnectionFactory(connFactory, null);
 			poolableConnFactory.setValidationQuery("select 1");
 			
 			GenericObjectPoolConfig poolConfig = new GenericObjectPoolConfig();
@@ -47,13 +46,11 @@ public class DBCPInit2 extends HttpServlet {
 			poolConfig.setMinIdle(4);
 			poolConfig.setMaxTotal(50);
 			
-			GenericObjectPool<PoolableConnection> connectionPool =
-					new GenericObjectPool<>(poolableConnFactory, poolConfig);
+			GenericObjectPool<PoolableConnection> connectionPool =	new GenericObjectPool<>(poolableConnFactory, poolConfig);
 			poolableConnFactory.setPool(connectionPool);
 			
 			Class.forName("org.apache.commons.dbcp2.PoolingDriver");
-			PoolingDriver driver = (PoolingDriver)
-					DriverManager.getDriver("jdbc:apache:commons:dbcp:");
+			PoolingDriver driver = (PoolingDriver)DriverManager.getDriver("jdbc:apache:commons:dbcp:");
 			String poolName = getInitParameter("poolName");
 			driver.registerPool(poolName, connectionPool);
 		} catch(Exception e) {
