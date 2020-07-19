@@ -10,7 +10,10 @@
 <%
 	String bookTitle = "JSP 프로그래밍";
 	String author = "최범균";
+	String name = request.getParameter("name");
 %>
 <b><%= bookTitle %></b> (<%= author %>)입니다.
+<br />
+<%= name %>
 </body>
 </html>
