@@ -7,11 +7,11 @@
 	window.onload = function(){
 		if(typeof(EventSource) !== "undefined"){
 			var source = new EventSource("test.jsp");
-			source.onopen = function(event){
-				document.getElementById("state").innerHTML = "STARTED";
-			};
+			//source.onopen = function(event){
+			//	document.getElementById("state").innerHTML = "STARTED";
+			//};
 			source.onmessage = function(event){
-				document.getElementById("result").innerHTML = event.data;
+				document.getElementById("result").innerHTML += event.data + "<br>";
 			};
 		}
 		else {
@@ -22,7 +22,7 @@
 </head>
 <body>
 	<h1>서버 전송 이벤트</h1>
-	<!-- <output id="result"></output>-->
-	<p><span id="state">STATE</span> <span id="result"></span></p>
+	<output id="result"></output>
+	<!-- <p><span id="state">STATE</span> <span id="result"></span></p>-->
 </body>
 </html>

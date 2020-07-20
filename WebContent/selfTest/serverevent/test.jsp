@@ -4,4 +4,4 @@
 <%
 Date time = new Date();
 %>
-data:<%= time.toLocaleString()+"\n\n" %>
+data: <%= time.toLocaleString()+"\n\n" %>
