@@ -54,7 +54,7 @@ public class DBCPInitListener implements ServletContextListener {
 			poolConfig.setTimeBetweenEvictionRunsMillis(1000L * 60L * 5L);
 			poolConfig.setTestWhileIdle(true);
 			poolConfig.setMinIdle(4);
-			poolConfig.setMaxIdle(50);
+			poolConfig.setMaxTotal(50);
 			
 			GenericObjectPool<PoolableConnection> connectionPool = new GenericObjectPool<>(poolableConnFactory, poolConfig);
 			poolableConnFactory.setPool(connectionPool);
