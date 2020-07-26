@@ -1,6 +1,6 @@
 package chap18;
 
-import java.io.FileInputStream;
+import java.io.FileReader;
 import java.io.IOException;
 import java.util.Enumeration;
 import java.util.HashMap;
@@ -46,12 +46,12 @@ public class SimpleController extends HttpServlet {
     	try {
 	    	ServletContext app = getServletContext();
 	//    	String path = "/WEB-INF/commandHandler.properties";
-	    	String path = getInitParameter("configFile");
+	    	String path = getInitParameter("configFile"); // contextPath기준 /WEB-INF/commandHandler.properties
 	    	
 	    	String realPath = app.getRealPath(path);
-	    	System.out.println(realPath);
-	    	FileInputStream inStream = new FileInputStream(realPath);
-	    	//FileReader inStream = new FileReader(realPath);
+	    	//System.out.println("SimpleController.java realPath: "+realPath);//C:\workspace_jee\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\myjsp\WEB-INF\commandHandler.properties
+	    	//FileInputStream inStream = new FileInputStream(realPath);
+	    	FileReader inStream = new FileReader(realPath);
 	    	
 	    	Properties props = new Properties();
 	    	props.load(inStream);

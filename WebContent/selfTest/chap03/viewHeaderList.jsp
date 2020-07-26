@@ -1,11 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import="chap11.MyBean" %>
-<%
-MyBean m = new MyBean();
-m.setName("john");
-m.setId(100);
-%>
+<%@ page import="java.util.Enumeration" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,25 +15,15 @@ m.setId(100);
 <title>Insert title here</title>
 </head>
 <body>
-
 <%
-request.setAttribute("attr1", "value1");
-request.setAttribute("myBean", m);
+	Enumeration<String> headerEnum = request.getHeaderNames();
+	while(headerEnum.hasMoreElements()){
+		String headerName = headerEnum.nextElement();
+		String headerValue = request.getHeader(headerName);
 %>
-
-<h1>attr1: ${attr1 }</h1>
-<h1>myBean: ${myBean }</h1>
-<h1>myBean.name: ${myBean.name }</h1>
-<h1>myBean.id: ${myBean.id }</h1>
-<h1>myBean["name"]: ${myBean["name"] }</h1>
-<h1>myBean["id"]: ${myBean["id"] }</h1>
-<hr />
-elEx4Sub.jsp: 
-<jsp:include page="elEx4Sub.jsp"></jsp:include>
-<hr />
-pageContext.getRequest(): ${pageContext.request } <br />
-pageContext.getLocalName(): ${pageContext.request.localName } <br />
-pageContext.getLocalPort(): ${pageContext.request.localPort }
-
+<%= headerName %> = <%= headerValue %> <br>
+<%
+	}
+%>
 </body>
 </html>

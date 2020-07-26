@@ -1,11 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import="chap11.MyBean" %>
-<%
-MyBean m = new MyBean();
-m.setName("john");
-m.setId(100);
-%>
+<%@ page import="java.net.URLDecoder" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,28 +12,23 @@ m.setId(100);
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
 
-<title>Insert title here</title>
+<title>쿠키 목록</title>
 </head>
 <body>
-
+쿠키 목록 <br />
 <%
-request.setAttribute("attr1", "value1");
-request.setAttribute("myBean", m);
+Cookie[] cookies = request.getCookies();
+if(cookies != null && cookies.length > 0){
+	for(int i=0; i<cookies.length; i++){
 %>
-
-<h1>attr1: ${attr1 }</h1>
-<h1>myBean: ${myBean }</h1>
-<h1>myBean.name: ${myBean.name }</h1>
-<h1>myBean.id: ${myBean.id }</h1>
-<h1>myBean["name"]: ${myBean["name"] }</h1>
-<h1>myBean["id"]: ${myBean["id"] }</h1>
-<hr />
-elEx4Sub.jsp: 
-<jsp:include page="elEx4Sub.jsp"></jsp:include>
-<hr />
-pageContext.getRequest(): ${pageContext.request } <br />
-pageContext.getLocalName(): ${pageContext.request.localName } <br />
-pageContext.getLocalPort(): ${pageContext.request.localPort }
-
+<%= cookies[i].getName() %>=<%= URLDecoder.decode(cookies[i].getValue(), "utf-8") %> <br />
+<%
+	}
+}else {
+%>
+쿠키가 존재하지 않습니다.
+<%
+}
+%>
 </body>
 </html>

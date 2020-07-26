@@ -12,4 +12,4 @@ MyBean m = (MyBean)o;
 </h1>
 --%>
 
-<h1>${myBean.name }, ${myBean.id }</h1>
+<h1>myBean.name: ${myBean.name }, myBean.id: ${myBean.id }</h1>

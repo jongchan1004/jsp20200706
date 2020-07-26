@@ -28,12 +28,13 @@ pageContext.setAttribute("myNum", "2");
 %>
 
 <h1>${mylist[0] }, ${mylist["0"] }</h1> <%--값으로 변환가능하면 문자열도 가능함 --%>
+<h1>list.get(0): <%= list.get(0) %></h1>
 <h1>${mylist[1] }</h1>
 <h1>${mylist[2] }</h1>
 <h1>${mylist[3] }</h1> <%--null이면 출력 안함 --%>
 <h1>${mylist[4] }</h1> <%--범위넘어가면 출력 안함 --%>
-<h1>myNum: ${mylist[myNum] }</h1> <%--값이면 11개객체,attr에서 찾음 . mylist[2]가 출력됨--%>
-<%-- <h1>${mylist["myNum"] }</h1> --%> <%--값으로 변환가능한 것만 문자열 가능 --%>
+<h1>mylist[myNum]: ${mylist[myNum] }</h1> <%--값이면 11개객체,attr에서 찾음 . mylist[2]가 출력됨--%>
+<%-- <h1>${mylist["myNum"] }</h1> --%> <%--NumberFormatException발생. 값으로 변환가능한 것만 문자열 가능 --%>
 
 <h1><%= ((List<String>)request.getAttribute("mylist")).get(3) %></h1> <%--null이라고 출력함 --%>
 

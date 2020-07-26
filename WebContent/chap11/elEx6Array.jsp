@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="java.lang.reflect.Array" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,11 +19,16 @@
 <%
 String[] arr = {"java", "css", "jquery"};
 request.setAttribute("myArr", arr);
+pageContext.setAttribute("myNum", "2");
 %>
 
 <h1>${myArr[0] }</h1>
+<h1>arr[0]: <%= arr[0] %></h1>
+<h1>Array.get(arr, 0): <%= (String)Array.get(arr, 0) %></h1>
+<h1>Array.get(arr, 0): <%= Array.get(arr, 0) %></h1> <%--Object타입 출력 잘됨 --%>
 <h1>${myArr["1"] }</h1>
 <h1>${myArr[2] }</h1>
+<h1>myArr[myNum]: ${myArr[myNum] }</h1>
 
 <hr />
 <ul>

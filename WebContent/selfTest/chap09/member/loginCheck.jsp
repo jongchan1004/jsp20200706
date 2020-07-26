@@ -1,10 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import="chap11.MyBean" %>
+<%@ page import="selfTest.util.Cookies" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%
-MyBean m = new MyBean();
-m.setName("john");
-m.setId(100);
+	Cookies cookies = new Cookies(request);
 %>
 <!DOCTYPE html>
 <html>
@@ -17,28 +17,21 @@ m.setId(100);
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
 
-<title>Insert title here</title>
+<title>로그인 여부 검사</title>
 </head>
 <body>
 
 <%
-request.setAttribute("attr1", "value1");
-request.setAttribute("myBean", m);
+	if (cookies.exists("AUTH")) {
 %>
-
-<h1>attr1: ${attr1 }</h1>
-<h1>myBean: ${myBean }</h1>
-<h1>myBean.name: ${myBean.name }</h1>
-<h1>myBean.id: ${myBean.id }</h1>
-<h1>myBean["name"]: ${myBean["name"] }</h1>
-<h1>myBean["id"]: ${myBean["id"] }</h1>
-<hr />
-elEx4Sub.jsp: 
-<jsp:include page="elEx4Sub.jsp"></jsp:include>
-<hr />
-pageContext.getRequest(): ${pageContext.request } <br />
-pageContext.getLocalName(): ${pageContext.request.localName } <br />
-pageContext.getLocalPort(): ${pageContext.request.localPort }
+아이디 "<%= cookies.getValue("AUTH") %>"로 로그인 한 상태
+<%
+	} else {
+%>
+로그인하지 않은 상태
+<%
+	}
+%>
 
 </body>
 </html>

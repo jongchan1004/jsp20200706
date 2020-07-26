@@ -10,9 +10,10 @@ List<Member> memberList = Arrays.asList(
 request.setAttribute("members", memberList);
 %>
 
-자바 리스트객체: ${ lst = members.stream().map(m -> m.name).toList() } <br />
-자바 배열객체: ${ arr = members.stream().map(m -> m.name).toArray() } <br />
-${ n = members.stream().map(m -> m.name).toArray()[0] } <br />
+리스트객체: ${ lst = members.stream().map(m -> m.name).toList() } <br />
+배열객체: ${ arr = members.stream().map(m -> m.name).toArray() } <br />
+배열원소 arr[0]: ${ arr[0] } = ${ n = members.stream().map(m -> m.name).toArray()[0] } <br />
+
 List 원소갯수: ${ members.stream().count() } <br />
 배열 원소갯수: ${ arr.stream().count() } <br />
 

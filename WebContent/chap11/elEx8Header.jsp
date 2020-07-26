@@ -16,19 +16,21 @@
 <body>
 
 <%-- <h1>${header }</h1>--%>
-<h1>${header["HOST"] }, ${header["host"] }, ${header.host }</h1>
-<h1>${header["Cache-Control"] }</h1> <%--왜 안보일까? --%>
-<h1>${header["sec-fetch-dest"] }</h1>
+<h1>header["HOST"]:${header["HOST"] }, header["host"]:${header["host"] }, header.host:${header.host }</h1>
+<h1>header["Cache-Control"]:${header["Cache-Control"] }</h1> <%--검사로 해 놓고 보면 보임 --%>
+<h1>header["sec-fetch-dest"]:${header["sec-fetch-dest"] }</h1>
 
-<h1>${headerValues["accept-language"][0] }</h1>
+<h1>headerValues["accept-language"][0]:${headerValues["accept-language"][0] }</h1>
 <%-- 
 <h1>${headerValues["accept-language"][1] }</h1> <%--없어서 안 보임--%>
 
-<h1>${cookie["JSESSIONID"].name }, ${cookie["JSESSIONID"].value }</h1>
-<h1>${cookie.JSESSIONID.name }, ${cookie.JSESSIONID.value }</h1>
+<h1>cookie:${cookie }</h1>
+<h1>cookie["JSESSIONID"]:${cookie["JSESSIONID"] }</h1>
+<h1>cookie["JSESSIONID"].name:${cookie["JSESSIONID"].name }, cookie["JSESSIONID"].value:${cookie["JSESSIONID"].value }</h1>
+<h1>cookie.JSESSIONID.name:${cookie.JSESSIONID.name }, cookie.JSESSIONID.value:${cookie.JSESSIONID.value }</h1>
 
-<h1>${initParam.logEnabled }</h1>
-<h1>${initParam.debugLevel }</h1>
+<h1>initParam.logEnabled:${initParam.logEnabled }</h1>
+<h1>initParam.debugLevel:${initParam.debugLevel }</h1>
 
 </body>
 </html>

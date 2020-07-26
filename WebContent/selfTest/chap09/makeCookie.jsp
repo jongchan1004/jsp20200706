@@ -1,10 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import="chap11.MyBean" %>
+<%@ page import="java.net.URLEncoder" %>
 <%
-MyBean m = new MyBean();
-m.setName("john");
-m.setId(100);
+Cookie cookie = new Cookie("name", URLEncoder.encode("최범균", "utf-8"));
+response.addCookie(cookie);
+Cookie cookie1 = new Cookie("test","");
+cookie1.setValue("test");
 %>
 <!DOCTYPE html>
 <html>
@@ -21,24 +22,8 @@ m.setId(100);
 </head>
 <body>
 
-<%
-request.setAttribute("attr1", "value1");
-request.setAttribute("myBean", m);
-%>
-
-<h1>attr1: ${attr1 }</h1>
-<h1>myBean: ${myBean }</h1>
-<h1>myBean.name: ${myBean.name }</h1>
-<h1>myBean.id: ${myBean.id }</h1>
-<h1>myBean["name"]: ${myBean["name"] }</h1>
-<h1>myBean["id"]: ${myBean["id"] }</h1>
-<hr />
-elEx4Sub.jsp: 
-<jsp:include page="elEx4Sub.jsp"></jsp:include>
-<hr />
-pageContext.getRequest(): ${pageContext.request } <br />
-pageContext.getLocalName(): ${pageContext.request.localName } <br />
-pageContext.getLocalPort(): ${pageContext.request.localPort }
+<%= cookie.getName() %>쿠키의 값 = "<%= cookie.getValue() %>" <br />
+<%= cookie1.getName() %>쿠키의 값 = "<%= cookie1.getValue() %>"
 
 </body>
 </html>
