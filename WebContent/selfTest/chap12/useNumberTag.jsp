@@ -20,9 +20,10 @@
 <c:set var="price" value="10000" />
 <fmt:formatNumber value="${price}" type="number" var="numberType" />
 <br />
-통화: <fmt:formatNumber value="${price}" type="currency" currencySymbol="원"/>
+통화(currencySymbol): <fmt:formatNumber value="${price}" type="currency" currencySymbol="￦"/> <br />
+통화(currencyCode): <fmt:formatNumber value="${price}" type="currency" currencyCode="KRW"/>
 <br />
-퍼센트: <fmt:formatNumber value="${price}" type="percent" groupingUsed="false" />
+퍼센트: <fmt:formatNumber value="${price}" type="percent" groupingUsed="true" />
 <br />
 숫자: ${numberType}
 <br />

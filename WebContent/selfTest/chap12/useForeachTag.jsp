@@ -17,7 +17,14 @@ mapData.put("today",new java.util.Date());
 	${i}   <%--${status.index} 와 같음 --%>
 </c:forEach>
 <br />
-결과 = ${sum}
+결과1 = ${sum}
+
+<c:set var="sum" value="0" />
+<c:forEach var="i" begin="1" end="100" step="2" varStatus="status">
+	${sum = sum + i;''}
+</c:forEach>
+<br />
+결과2 = ${sum}
 
 <h4>구구단: 4단</h4>
 <ul>
