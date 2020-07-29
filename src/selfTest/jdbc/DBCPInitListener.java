@@ -16,6 +16,8 @@ import org.apache.commons.dbcp2.PoolingDriver;
 import org.apache.commons.pool2.impl.GenericObjectPool;
 import org.apache.commons.pool2.impl.GenericObjectPoolConfig;
 
+import com.mysql.cj.jdbc.AbandonedConnectionCleanupThread;
+
 public class DBCPInitListener implements ServletContextListener {
 	
 	@Override
@@ -70,6 +72,6 @@ public class DBCPInitListener implements ServletContextListener {
 	}
 	
 	public void contextDestroyed(ServletContextEvent sce) {
-		
+		AbandonedConnectionCleanupThread.checkedShutdown();
 	}
 }
