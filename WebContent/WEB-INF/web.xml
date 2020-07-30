@@ -178,6 +178,22 @@
   	</param-value>
   </context-param>
   
+  <servlet>
+  	<servlet-name>SelfUploadServlet</servlet-name>
+  	<servlet-class>selfTest.appB.UploadServlet</servlet-class>
+  	<multipart-config>
+  		<location>C:\temp</location>
+  		<max-file-size>-1</max-file-size>
+  		<max-request-size>-1</max-request-size>
+  		<file-size-threshold>1024</file-size-threshold>
+  	</multipart-config>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>SelfUploadServlet</servlet-name>
+  	<url-pattern>/upload</url-pattern>
+  </servlet-mapping>
+  
   <!-- 교육 -->
   <servlet>
   	<servlet-name>myservlet</servlet-name>
