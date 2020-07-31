@@ -1,28 +1,7 @@
-<%@ page language="java" contentType="text/plain; charset=UTF-8"
+<%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-
-<%@ page import="java.io.InputStream" %>
-<%@ page import="java.io.IOException" %>
-<%@ page trimDirectiveWhitespaces="true" %>
-<%
-	InputStream is = null;
-
-	//out.print("[");
-	//out.print(request.getContentType());
-	//out.print("]");
-	try {
-		is = request.getInputStream();
-		int data = -1;
-		
-		while ((data = is.read()) != -1) {
-			out.print((char)data);
-		}
-	} finally {
-		if (is != null) try { is.close(); } catch (IOException ex) {}
-	}
-%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -37,6 +16,13 @@
 <title>Insert title here</title>
 </head>
 <body>
+
+<form action="../upload" method="post" enctype="multipart/form-data"> <%--기본값 enctype="application/x-www-form-urlencoded" --%>
+text1: <input type="text" name="text1" /> <br />
+file1: <input type="file" name="file1" /> <br />
+file2: <input type="file" name="file2" /> <br />
+<input type="submit" value="전송"/>
+</form>
 
 </body>
 </html>

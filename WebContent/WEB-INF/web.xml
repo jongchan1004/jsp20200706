@@ -180,9 +180,9 @@
   
   <servlet>
   	<servlet-name>SelfUploadServlet</servlet-name>
-  	<servlet-class>selfTest.appB.UploadServlet</servlet-class>
+  	<servlet-class>selfTest.appB.UploadServlet2</servlet-class>
   	<multipart-config>
-  		<location>C:\temp</location>
+  		<location>C:\apache-tomcat-9.0.36\temp</location>
   		<max-file-size>-1</max-file-size>
   		<max-request-size>-1</max-request-size>
   		<file-size-threshold>1024</file-size-threshold>
@@ -191,7 +191,7 @@
   
   <servlet-mapping>
   	<servlet-name>SelfUploadServlet</servlet-name>
-  	<url-pattern>/upload</url-pattern>
+  	<url-pattern>/selfupload</url-pattern>
   </servlet-mapping>
   
   <!-- 교육 -->
@@ -379,4 +379,16 @@
   	<servlet-name>ControllerUsingURI</servlet-name>
   	<url-pattern>*.do</url-pattern>
   </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>fileUploadServlet</servlet-name>
+  	<servlet-class>chap23.UploadServlet</servlet-class>
+  	<multipart-config></multipart-config>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>fileUploadServlet</servlet-name>
+  	<url-pattern>/upload</url-pattern>
+  </servlet-mapping>
+  
 </web-app>
